@@ -22,6 +22,7 @@ jobs:
     
     - name: Cluster Configuration
       run: |
+        mkdir ~/.kube/
         curl -H "Authorization: bearer ${{ secrets.API_TOKEN }}" https://api.civo.com/v2/kubernetes/clusters\?region\=FRA1 | jq -r '.items[0].kubeconfig' > ~/.kube/config
     - name: Check Cluster Connection
       run: |
